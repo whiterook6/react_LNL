@@ -7,7 +7,7 @@ export const getShows = async () => {
   }
 
   const shows = await response.json();
-  return shows.results;
+  return Promise.all(shows.results.slice(0, 10).map(show => getShow(show.id)));
 };
 
 export const getShow = async (showID) => {
@@ -35,5 +35,5 @@ export const getEpisode = async (showID, seasonNumber, episodeNumber) => {
 };
 
 export const getImageURL = (imageURL) => {
-  return `https://image.tmdb.org/t/p/w500/${imageURL}`;
+  return `https://image.tmdb.org/t/p/w500${imageURL}`;
 };

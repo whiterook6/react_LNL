@@ -1,19 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
+import "./assets/bulma.min.css";
 import "./assets/favicon.ico";
 import "./assets/styles.css";
-import "./assets/bulma.min.css";
-import { Dashboard } from './Dashboard';
+import { PopularShows } from './pages/PopularShows';
 
 const rootEl = document.getElementById('app');
-const App = () => {
-  return (
-    <section className="section">
-      <div className="container" id="app">
-        <Dashboard />
-      </div>
-    </section>
-  );
-};
+const app = (
+  <div className="section">
+    <div className="container">
+      <PopularShows />
+    </div>
+  </div>
+)
 
-render(<App />, rootEl);
+render(app, rootEl);

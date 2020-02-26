@@ -3,6 +3,12 @@ body, html {
   width: 100%;
   padding: 0;
   margin: 0;
+  background-color: #efebeb !important;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
 }
 
 .stack > * {
@@ -11,4 +17,17 @@ body, html {
 
 .stack > *:last-child {
   margin-bottom: 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.row > * {
+  margin-right: 1rem;
+}
+
+.row > *:last-child {
+  margin-right: 0;
 }
