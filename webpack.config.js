@@ -37,7 +37,7 @@ const base = {
   plugins: [
     new CleanWebpackPlugin(),
     new HTMLWebpackPlugin({
-      template: "src/index.html",
+      template: "src/assets/index.html",
       filename: "index.html",
       inject: true,
       baseUrl: "/",

@@ -1,7 +1,13 @@
 module.exports = {
   presets: [
     "@babel/react",
-    "@babel/env"
+    ["@babel/env",
+      {
+        "targets": {
+          "esmodules": true
+        }
+      }
+    ]
   ],
   plugins: [
     [

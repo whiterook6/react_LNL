@@ -1,12 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
-import "./favicon.ico";
-import "./styles.css";
+import "./assets/favicon.ico";
+import "./assets/styles.css";
+import "./assets/bulma.min.css";
+import { Dashboard } from './Dashboard';
 
 const rootEl = document.getElementById('app');
 const App = () => {
   return (
-    <h1>Hello, world!</h1>
+    <section className="section">
+      <div className="container" id="app">
+        <Dashboard />
+      </div>
+    </section>
   );
 };
 
