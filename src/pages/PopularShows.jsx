@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getShows } from "../service";
 import {FaSpinner, FaExclamation} from "react-icons/fa";
-import { ShowList } from "../components/ShowList";
+import { ShowFilter } from "../components/ShowFilter";
 
 export const PopularShows = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -58,7 +58,7 @@ export const PopularShows = () => {
   return (
     <div>
       <h1 className="title">Popular Shows</h1>
-      <ShowList shows={shows} />
+      <ShowFilter shows={shows} />
     </div>
   );
 };

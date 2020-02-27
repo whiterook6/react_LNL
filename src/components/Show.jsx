@@ -33,7 +33,7 @@ export const Show = (props) => {
         </div>
         <div className="row">
           <div className="tag" onClick={toggleIsLiked}>
-            <FaStar style={isLiked ? { color: "#ffd700", marginRight: "0.5rem" } : {marginRight: "0.5rem"}} />
+            <FaStar style={isLiked ? { color: "orange", marginRight: "0.5rem" } : {marginRight: "0.5rem"}} />
             <span>{show.vote_average}</span>
           </div>
           <div className="tag"><FaUsers style={{ marginRight: "0.5rem" }}/>{Math.round(show.popularity)}</div>

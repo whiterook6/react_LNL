@@ -31,3 +31,7 @@ body, html {
 .row > *:last-child {
   margin-right: 0;
 }
+
+.control.has-icons-left .button {
+  padding-left: 2.5em;
+}
