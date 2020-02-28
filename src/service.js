@@ -1,6 +1,6 @@
 const API_KEY = "178ebe1c122da5811143753bcd116188";
 
-export const getShows = async () => {
+export const getPopularShows = async () => {
   const response = await fetch(`http://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}`);
   if (!response.ok){
     throw new Error("Cannot get popular shows");

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getShows } from "../service";
-import {FaSpinner, FaExclamation} from "react-icons/fa";
+import { getPopularShows } from "../service";
+import { FaSpinner, FaExclamation } from "react-icons/fa";
 import { ShowFilter } from "../components/ShowFilter";
 
 export const PopularShows = () => {
@@ -12,7 +12,7 @@ export const PopularShows = () => {
     setIsLoading(true);
 
     try {
-      const s = await getShows();
+      const s = await getPopularShows();
       setShows(s);
     } catch (error){
       setError(error);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaCheckSquare, FaSearch, FaSquare, FaStar, FaTimesCircle } from "react-icons/fa";
+import { FaCheckSquare, FaSearch, FaSquare, FaStar, FaTimesCircle, FaSortAlphaUp, FaSortAlphaDown, FaSortAmountUp, FaSortAmountDown, FaSortNumericUp, FaSortNumericDown } from "react-icons/fa";
 import { ShowList } from "./ShowList";
 
 export const ShowFilter = (props) => {
@@ -7,6 +7,8 @@ export const ShowFilter = (props) => {
   const [searchInput, setSearchInput] = useState("");
   const [minRating, setMinRating] = useState(0);
   const [isFinishedOnly, setIsFinishedOnly] = useState(false);
+  const [sortDirection, setSortDirection] = useState("ascending");
+  const [sortField, setSortField] = useState("name");
 
   const results = props.shows.filter(show => {
     if (show.vote_average < minRating){
@@ -16,9 +18,13 @@ export const ShowFilter = (props) => {
       return false;
     }
     if (searchInput.length > 2){
-      const search = `${show.name} ${show.overview}`.toLowerCase();
-      if (!search.includes(searchInput.toLowerCase())){
-        return false;
+      const search = `${show.name} ${show.overview} ${show.genres.map(genre => `${genre.name}`).join()}`.toLowerCase();
+      const inputBits = searchInput.toLowerCase().split(/\s/).filter(bit => bit.length > 2);
+
+      for (const inputBit of inputBits){
+        if (!search.includes(inputBit)){
+          return false;
+        }
       }
     }
 
@@ -42,11 +48,52 @@ export const ShowFilter = (props) => {
     setIsFinishedOnly(!isFinishedOnly);
   }
 
+  const onChangeSortField = (field) => {
+    if (["name", "rating", "popularity"].includes(field)){
+      if (sortField !== field){
+        setSortField(field);
+      }
+    }
+  };
+
+  const onChangeSortDirection = (direction) => {
+    if (["ascending", "descending"].includes(direction)) {
+      if (sortDirection !== direction) {
+        setSortDirection(direction);
+      }
+    }
+  };
+
+  let SortingIcon;
+  switch (sortField){
+    case "name":
+      if (sortDirection === "ascending"){
+        SortingIcon = FaSortAlphaUp;
+      } else {
+        SortingIcon = FaSortAlphaDown;
+      }
+      break;
+    case "rating":
+      if (sortDirection === "ascending"){
+        SortingIcon = FaSortAmountUp;
+      } else {
+        SortingIcon = FaSortAmountDown;
+      }
+      break;
+    case "popularity":
+      if (sortDirection === "ascending"){
+        SortingIcon = FaSortNumericUp;
+      } else {
+        SortingIcon = FaSortNumericDown;
+      }
+      break;
+  }
+
   return (
     <>
       <div className="box">
         <label className="label">Search and Filter</label>
-        <div className="level">
+        <div className="level" style={{flexWrap: "wrap"}}>
           <div className="level-left">
             <div className="field is-horizontal">
               <div className="field-body">
@@ -86,6 +133,36 @@ export const ShowFilter = (props) => {
                     <span className="icon is-small is-left" style={{color:"inherit"}}>
                       {isFinishedOnly ? <FaCheckSquare /> : <FaSquare />}
                     </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="level-right">
+            <div className="field is-horizontal">
+              <div className="field-body">
+                <div className="field">
+                  <div className="control has-icons-left">
+                    <div className="select">
+                      <select onChange={onChangeSortField} value={sortField}>
+                        <option value="name">Sort by Name</option>
+                        <option value="rating">Sort by Rating</option>
+                        <option value="popularity">Sort by Popularity</option>
+                      </select>
+                    </div>
+                    <div className="icon is-small is-left">
+                      <SortingIcon />
+                    </div>
+                  </div>
+                </div>
+                <div className="field">
+                  <div className="control">
+                    <div className="select">
+                      <select onChange={onChangeSortDirection} value={sortDirection}>
+                        <option value="ascending">Ascending</option>
+                        <option value="descending">Descending</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
