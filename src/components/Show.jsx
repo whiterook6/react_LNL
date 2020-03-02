@@ -5,6 +5,11 @@ import { PopularityTag } from "./PopularityTag";
 import { StarToggleTag } from "./StarToggleTag";
 import { ImageBackground } from "./ImageBackground";
 
+/**
+ * Displays an overview of a TV show, including number of episodes, rating, etc. Also allows
+ * the user to toggle whether they like the show or not, though this isn't stored in a server
+ * anywhere so it's not really persistent.
+ */
 export const Show = (props) => {
   const show = props.show;
   const [isLiked, setIsLiked] = useState(false);

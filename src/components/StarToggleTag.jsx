@@ -1,6 +1,9 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 
+/**
+ * Simple component that shows a star, either filled or grey, and allows an onClick callback
+ */
 export const StarToggleTag = (props) => {
   const {
     starCount,

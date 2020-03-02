@@ -10,4 +10,4 @@ export const PopularityTag = (props) => {
       {Math.round(popularity)}
     </div>
   );
-}
+};
