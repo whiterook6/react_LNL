@@ -19,6 +19,7 @@ export const getShow = async (showID) => {
 };
 
 export const getSeason = async (showID, seasonNumber) => {
+  console.log("Getting season");
   const response = await fetch(`https://api.themoviedb.org/3/tv/${showID}/season/${seasonNumber}?api_key=${API_KEY}`);
   if (!response.ok) {
     throw new Error(`Cannot get show with id ${showID}`);

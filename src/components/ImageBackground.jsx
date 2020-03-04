@@ -6,22 +6,18 @@ import React from "react";
  * will sibling elements. See Show.jsx for an example.
  */
 export const ImageBackground = (props) => {
-  const {
-    url,
-    style
-  } = props;
+  const styleIMG = {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    opacity: 0.3,
+    background: `url(${props.url}) center center no-repeat`,
+    backgroundSize: "100% auto"
+  };
 
   return (
-    <div style={{
-      ...style,
-      position: "absolute",
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
-      opacity: 0.3,
-      background: `url(${url}) center center no-repeat`,
-      backgroundSize: "cover"
-    }} />
+    <div style={{...styleIMG, ...props.style}} />
   )
 };
