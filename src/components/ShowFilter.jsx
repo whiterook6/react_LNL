@@ -57,6 +57,8 @@ export const ShowFilter = (props) => {
     setIsFinishedOnly(!isFinishedOnly);
   };
 
+  const sortIcon = <FaSortAlphaDown />;
+
   return (
     <>
       <div className="box">
@@ -119,7 +121,7 @@ export const ShowFilter = (props) => {
                       </select>
                     </div>
                     <div className="icon is-small is-left">
-                      <FaSortAlphaDown />
+                      {sortIcon}
                     </div>
                   </div>
                 </div>
@@ -140,5 +142,5 @@ export const ShowFilter = (props) => {
       </div>
       <ShowList shows={results} />
     </>
-  )
+  );
 };

@@ -9,9 +9,11 @@ export const ShowList = (props) => {
 
   return (
     <div className="stack">
-      {shows.map(show => (
+      {shows.length > 0 ? shows.map(show => (
         <Show show={show} key={show.id} />
-      ))}
+      )) : (
+        <div>No Shows</div>
+      )}
     </div>
   );
 }
